@@ -142,3 +142,156 @@ header {
 	max-width: 400px;
 }
 /* BANNER || */
+
+
+
+
+
+/* || MAIN (ATRIBUIÇÕES GERAIS) */
+main section {
+	margin-bottom: 40px;
+}
+
+main section .titleMain {
+	margin-top: 60px;
+
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 26px;
+	font-weight: 500;
+}
+
+main section .subtitleMain {
+	margin-top: 20px;
+
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 14px;
+}
+
+main section .bodySection {
+	margin-top: 50px;
+	display: flex;
+}
+
+main section .bodySection .title {
+	text-transform: uppercase;
+	font-size: 16px;
+	font-weight: 500;
+	margin-top: 20px;
+}
+
+main section .bodySection .subtitle {
+	font-size: 14px;
+	margin-top: 10px;
+}
+
+
+.darkSection {
+	background-color: #000;
+}
+.darkSection .titleMain, .darkSection .bodySection .title {
+	color: #FFF;
+}
+.darkSection .subtitleMain, .darkSection .bodySection .subtitle {
+	color: #AAA;
+}
+
+
+.lightSection {
+	background-color: #FFF;
+}
+.lightSection .titleMain, .lightSection .bodySection .title {
+	color: #000;
+}
+.lightSection .subtitleMain, .lightSection .bodySection .subtitle {
+	color: #555;
+}
+/* MAIN (ATRIBUIÇÕES GERAIS) || */
+
+
+
+
+
+/* || SOBRE NÓS */
+.sobreNos {
+	justify-content: space-between;
+}
+
+.sobreNos div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex: 1;
+	padding: 0 10px;
+}
+
+.sobreNos > :nth-child(2) {
+	border-left: 1px solid;
+	border-right: 1px solid;
+	border-color: var(--color-red-clear);
+}
+
+.sobreNos img {
+	height: 100px;
+}
+/* SOBRE NÓS || */
+
+
+
+
+
+/* || SERVIÇOS */
+.servicos > div {
+	display: flex;
+	width: 100%;
+	margin-bottom: 40px;
+	overflow: hidden;
+	border-radius: 2px;
+}
+
+.servicos .servico1 .servicoA {
+	background-image: url("../images/servico-gravacao.jpg");
+}
+.servicos .servico2 .servicoA {
+	background-image: url("../images/servico-edicao.jpg");
+}
+.servicos .servico3 .servicoA {
+	background-image: url("../images/servico-producao.jpg");
+}
+.servicos .servico4 .servicoA {
+	background-image: url("../images/servico-mixagem.jpg");
+}
+.servicos .servico5 .servicoA {
+	background-image: url("../images/servico-masterizacao.jpg");
+}
+
+.servicos .servicoA {
+	height: 300px;
+	flex: 2;
+	background-image: url("../images/servico-gravacao.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.servicos .servicoB {
+	flex: 1;
+	background-color: var(--color-green-dark);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 0 20px;
+	text-align: center;
+}
+
+.servicos .servicoB .title{
+	font-size: 26px;
+}
+
+.servicos .servicoB .subtitle{
+	font-size: 18px;
+	color: #CCC;
+}
+/* SERVIÇOS || */
