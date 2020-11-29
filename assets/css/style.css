@@ -21,6 +21,10 @@
 	font-family: 'Ubuntu', Arial, Liberation Sans;
 }
 
+body {
+	background-color: #000;
+}
+
 .column {
 	flex-direction: column;
 }
@@ -148,8 +152,8 @@ header {
 
 
 /* || MAIN (ATRIBUIÇÕES GERAIS) */
-main section {
-	margin-bottom: 40px;
+main section > :last-child {
+	padding-bottom: 40px;
 }
 
 main section .titleMain {
@@ -213,6 +217,94 @@ main section .bodySection .subtitle {
 
 
 
+/* || SLIDES */
+.slides {
+	width: 960px;
+	overflow: hidden;
+	margin: auto;
+}
+
+.slidesArea {
+	width: 1000vw;
+	transition: margin-left 1s;
+}
+
+.slide {
+	width: 300px;
+	margin: 0 10px;
+	border-radius: 2px;
+	float: left;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #FFF;
+	text-align: center;
+}
+
+.slide img {
+	width: 190px;
+	height: 190px;
+	border-radius: 95px;
+	border: 2px solid #000;
+	margin-top: 50px;
+}
+
+.slide .title {
+	color: #000 !important;
+}
+
+.slide .subtitle {
+	text-transform: uppercase;
+	margin-bottom: 20px;
+}
+
+.slides .move {
+	height: 80px;
+	width: 960px;
+	position: absolute;
+	background-color: transparent;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: calc(206px - 40px);
+}
+
+.slides .back, .slides .next {
+	width: 70px;
+	height: 70px;
+	border-radius: 35px;
+	border: 1px solid #000;
+	background-color: rgba(255, 255, 255, 0.8);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.slides .back {
+	margin-left: -30px;
+}
+.slides .next {
+	margin-right: -30px;
+}
+
+.slides .back:hover, .slides .next:hover {
+	background-color: #DDD;
+	cursor: pointer;
+}
+
+.slides .back img {
+	height: 40px;
+	transform: rotate(180deg);
+}
+.slides .next img {
+	height: 40px;
+}
+/* SLIDES || */
+
+
+
+
+
 /* || SOBRE NÓS */
 .sobreNos {
 	justify-content: space-between;
@@ -242,6 +334,17 @@ main section .bodySection .subtitle {
 
 
 /* || SERVIÇOS */
+#servicos {
+	background-image: url("../images/servicos-bg.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+#servicos .bgBlackTransp {
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
 .servicos > div {
 	display: flex;
 	width: 100%;
@@ -269,7 +372,6 @@ main section .bodySection .subtitle {
 .servicos .servicoA {
 	height: 300px;
 	flex: 2;
-	background-image: url("../images/servico-gravacao.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
@@ -295,3 +397,22 @@ main section .bodySection .subtitle {
 	color: #CCC;
 }
 /* SERVIÇOS || */
+
+
+
+
+
+/* || NOSSOS PROJETOS */
+#nossosProjetos {
+	background-color: #DDD;
+}
+
+.nossosProjetos {
+	justify-content: center;
+}
+
+.nossosProjetos .slide audio {
+	width: 250px;
+	margin-bottom: 30px;
+}
+/* NOSSOS PROJETOS || */
