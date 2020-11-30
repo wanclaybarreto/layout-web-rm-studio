@@ -211,6 +211,28 @@ main section .bodySection .subtitle {
 .lightSection .subtitleMain, .lightSection .bodySection .subtitle {
 	color: #555;
 }
+
+
+.button {
+	height: 40px;
+	width: 100px;
+	margin: auto;
+	margin-top: 10px;
+    background-color: var(--color-red-main);
+    border-color: transparent;
+    border-radius: 20px;
+    color:#FFF;
+    text-transform: uppercase;
+    text-decoration: none;
+    outline: 0;
+}
+
+.button:hover {
+	color: var(--color-red-dark);
+}
+.button:active {
+	color: var(--color-red-clear);
+}
 /* MAIN (ATRIBUIÇÕES GERAIS) || */
 
 
@@ -415,6 +437,10 @@ main section .bodySection .subtitle {
 	width: 250px;
 	margin-bottom: 30px;
 }
+
+.nossosProjetos .slide audio:focus {
+	outline: 0;
+}
 /* NOSSOS PROJETOS || */
 
 
@@ -465,3 +491,54 @@ main section .bodySection .subtitle {
 	margin: 7.5px 15px;
 }
 /* GALERIA || */
+
+
+
+
+
+/* || CONTATE-NOS */
+.contatenos {
+	flex-direction: column;
+	align-items: center;
+}
+
+.contatenos form {
+	width: 60%;
+}
+
+.frmContatenos {
+	display: flex;
+	flex-direction: column;
+}
+
+.frmContatenos input[type=text],
+.frmContatenos textarea {
+	height: 40px;
+	background: transparent;
+	border: 0;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #CCC;
+	outline: 0;
+}
+
+.frmContatenos textarea {
+	height: 100px;
+	resize: none;
+}
+
+.frmContatenos .nomeAndEmail {
+	display: flex;
+	justify-content: space-between;
+}
+
+.frmContatenos .nomeAndEmail input {
+	width: 47%;
+}
+
+.contatenos .localMapa {
+	width: 100%;
+	margin-top: 50px;
+	overflow: hidden;
+	border-radius: 2px;
+}
+/* CONTATE-NOS || */
