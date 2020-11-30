@@ -379,7 +379,7 @@ main section .bodySection .subtitle {
 
 .servicos .servicoB {
 	flex: 1;
-	background-color: var(--color-green-dark);
+	background-color: var(--color-red-dark);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -416,3 +416,52 @@ main section .bodySection .subtitle {
 	margin-bottom: 30px;
 }
 /* NOSSOS PROJETOS || */
+
+
+
+
+
+/* || GALERIA */
+.galeria {
+	width: 100%;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.galeria > div {
+	width: 255px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.galeria > div:hover .ampliarFoto {
+	display: flex;
+	cursor: pointer;
+}
+
+.galeria .ampliarFoto {
+	position: absolute;
+	width: 240px;
+	height: 155px;
+	margin: 7.5px 15px;
+	background-color: rgba(0,0,0,0.7);
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	color: #FFF;
+}
+
+.galeria .ampliarFoto img {
+	width: 50px;
+	margin-top: 10px;
+}
+
+.galeria > div > img {
+	width: 240px;
+	height: 155px;
+	margin: 7.5px 15px;
+}
+/* GALERIA || */
