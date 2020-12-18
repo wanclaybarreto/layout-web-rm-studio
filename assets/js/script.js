@@ -17,7 +17,7 @@ menu.forEach((li) => {
 
 });
 
-//Eventos FOOTER:
+//Evento botão [HOME] FOOTER:
 document.querySelector(".voltarHOME a").addEventListener("click", (event) => {
     event.preventDefault();
 
@@ -25,6 +25,70 @@ document.querySelector(".voltarHOME a").addEventListener("click", (event) => {
         
     document.querySelector(".menu li.active").classList.remove("active");
 });
+
+
+//SLIDER:
+let slidesArea        = document.querySelector(".slides .slidesArea");
+let indSlide          = 0;
+let indMaxSlide       = document.querySelectorAll(".slides .slide").length - 1;
+
+document.querySelector(".slides .move .back").style.backgroundColor = "#AAA";
+
+function avancarSlide() {
+    indSlide++;
+    if ((indSlide > indMaxSlide - 2 && (window.innerWidth > 1024)) ||
+        (indSlide > indMaxSlide - 1 && (window.innerWidth < 1025 && window.innerWidth > 705)) ||
+        (indSlide > indMaxSlide     && (window.innerWidth < 706))) {
+        
+            indSlide--;
+            return;
+    }
+    moverSlide();
+}
+
+function voltarSlide() {
+    indSlide--;
+    if (indSlide < 0) {
+        indSlide++;
+        return;
+    }
+    moverSlide();
+}
+
+//window.onresize = moverSlide;
+window.addEventListener("resize", () => {
+    if ((indSlide > indMaxSlide - 2 && (window.innerWidth > 1024))) {
+        indSlide -= 2;
+        moverSlide();
+    } else if ((indSlide > indMaxSlide - 1 && (window.innerWidth < 1025 && window.innerWidth > 705))) {
+        indSlide--;
+        moverSlide();
+    } else {
+        moverSlide();
+    }
+});
+
+function moverSlide() {
+    let larguraSlide = document.querySelector(".slide").clientWidth + 20; //20 por causa do margin 10 nos lados
+
+    slidesArea.style.marginLeft = `-${ (larguraSlide * indSlide) }px`;
+
+    if ((indSlide > indMaxSlide - 3 && (window.innerWidth > 1024)) ||
+        (indSlide > indMaxSlide - 2 && (window.innerWidth < 1025 && window.innerWidth > 705)) ||
+        (indSlide > indMaxSlide - 1 && (window.innerWidth < 706))) {
+        
+            document.querySelector(".slides .move .next").style.backgroundColor = "#AAA";
+    } else {
+            document.querySelector(".slides .move .next").style.backgroundColor = "rgba(255, 255, 255, 0.8)";
+    }
+
+    if (indSlide < 1) {
+        document.querySelector(".slides .move .back").style.backgroundColor = "#AAA";
+    } else {
+        document.querySelector(".slides .move .back").style.backgroundColor = "rgba(255, 255, 255, 0.8)";
+    }
+}
+
 
 
 //ANIMAÇÕES:
