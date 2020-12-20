@@ -17,6 +17,8 @@ menu.forEach((li) => {
 
 });
 
+
+
 //Evento botão [HOME] FOOTER:
 document.querySelector(".voltarHOME a").addEventListener("click", (event) => {
     event.preventDefault();
@@ -25,6 +27,7 @@ document.querySelector(".voltarHOME a").addEventListener("click", (event) => {
         
     document.querySelector(".menu li.active").classList.remove("active");
 });
+
 
 
 //SLIDER:
@@ -55,7 +58,6 @@ function voltarSlide() {
     moverSlide();
 }
 
-//window.onresize = moverSlide;
 window.addEventListener("resize", () => {
     if ((indSlide > indMaxSlide - 2 && (window.innerWidth > 1024))) {
         indSlide -= 2;
@@ -88,6 +90,72 @@ function moverSlide() {
         document.querySelector(".slides .move .back").style.backgroundColor = "rgba(255, 255, 255, 0.8)";
     }
 }
+
+
+
+//GALERIA:
+let imgsGaleria = [];
+let indImgsGaleria;
+
+document.querySelectorAll(".galeria > div > img").forEach((element) => {
+    imgsGaleria.push(element.src);
+});
+
+document.querySelectorAll(".galeria .ampliarFoto").forEach ((element) => {
+    element.addEventListener("click", (event) => {
+        indImgsGaleria = imgsGaleria.indexOf( event.target.closest(".foto").querySelector(".foto > img").src );
+
+        document.querySelector(".galeriaAmpliada .fotoExibida").src = imgsGaleria[indImgsGaleria];
+
+        document.querySelector(".galeriaAmpliada").style.display = "flex";
+    });
+});
+
+function avancarFoto() {
+    indImgsGaleria++;
+    if (indImgsGaleria > imgsGaleria.length - 1) {
+        indImgsGaleria = 0;
+    }
+    document.querySelector(".galeriaAmpliada .fotoExibida").src = imgsGaleria[indImgsGaleria];
+}
+
+function voltarFoto() {
+    indImgsGaleria--;
+    if (indImgsGaleria < 0) {
+        indImgsGaleria = imgsGaleria.length - 1;
+    }
+    document.querySelector(".galeriaAmpliada .fotoExibida").src = imgsGaleria[indImgsGaleria];
+}
+
+function fecharFoto() {
+    document.querySelector(".galeriaAmpliada").style.display = "none";
+}
+
+document.querySelector(".galeriaAmpliada .avancar").addEventListener("click", () => {
+    avancarFoto();
+});
+
+document.querySelector(".galeriaAmpliada .voltar").addEventListener("click", () => {
+    voltarFoto();
+});
+
+document.querySelector(".galeriaAmpliada .fechar").addEventListener("click", () => {
+    fecharFoto()
+});
+
+document.addEventListener("keyup", (event) => {
+    if (document.querySelector(".galeriaAmpliada").style.display == "flex") {
+
+        if(event.key == "ArrowLeft") {
+            voltarFoto();
+        } else if (event.key == "ArrowRight") {
+            avancarFoto();
+        } else if (event.key == "Escape") {
+            fecharFoto();
+        }
+
+    }
+});
 
 
 

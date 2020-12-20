@@ -502,14 +502,20 @@ main section .bodySection .subtitle {
 	flex-wrap: wrap;
 }
 
-.galeria > div {
+.galeria .foto {
 	width: 255px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.galeria > div:hover .ampliarFoto {
+.galeria .foto > img {
+	width: 240px;
+	height: 155px;
+	margin: 7.5px 15px;
+}
+
+.galeria .foto:hover .ampliarFoto {
 	display: flex;
 	cursor: pointer;
 }
@@ -535,10 +541,63 @@ main section .bodySection .subtitle {
 	margin-top: 10px;
 }
 
-.galeria > div > img {
-	width: 240px;
-	height: 155px;
-	margin: 7.5px 15px;
+.galeriaAmpliada {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 10;
+	background-color: rgba(0, 0, 0, 0.9);
+	display: none;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.galeriaAmpliada .fotoExibida {
+	max-height: calc(100% - 80px);
+	max-width: calc(100% - 250px);
+	border-radius: 5px;
+}
+
+.galeriaAmpliada .voltar, .galeriaAmpliada .avancar {
+	margin: 20px;
+	height: 70px;
+	width: 70px;
+	border-radius: 35px;
+	border: 1px solid #000;
+	background-color: rgba(255, 255, 255, 0.8);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 16px;
+	color: #000;
+	cursor: pointer;
+}
+
+.galeriaAmpliada .voltar img {
+	height: 40px;
+	transform: rotate(180deg);
+}
+
+.galeriaAmpliada .avancar img {
+	height: 40px;
+}
+
+.galeriaAmpliada .voltar:hover, .galeriaAmpliada .avancar:hover {
+	background-color: #DDD;
+}
+
+.galeriaAmpliada .voltar:active, .galeriaAmpliada .avancar:active {
+	background-color: #AAA;
+}
+
+.galeriaAmpliada .fechar {
+	position: fixed;
+	top: 40px;
+	right: 50px;
+	color: #FFF;
+	cursor: pointer;
 }
 /* GALERIA || */
 
@@ -830,13 +889,22 @@ footer .itens img {
 		border-bottom: 1px solid;
 	}
 
-	/* || SERVIÇOS */
+	/* SERVIÇOS: */
 	.servicos > div {
 		flex-direction: column;
 	}
 
 	.servicos .servicoA {
 		min-height: 200px;
+	}
+
+	/* GALERIA: */
+	.galeria .ampliarFoto {
+		display: none;
+	}
+
+	.galeriaAmpliada {
+		display: none !important;
 	}
 }
 
@@ -952,6 +1020,15 @@ footer .itens img {
 		max-width: 250px;
 		margin: auto;
 		margin-top: 20px;
+	}
+
+	/* GALERIA: */
+	.galeria .ampliarFoto {
+		display: none;
+	}
+
+	.galeriaAmpliada {
+		display: none !important;
 	}
 
 	/* FOOTER: */
