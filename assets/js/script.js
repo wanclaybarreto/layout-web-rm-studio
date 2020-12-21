@@ -10,8 +10,9 @@ menu.forEach((li) => {
             fecharMenuMobile();
         }
 
-        document.documentElement.scrollTop = document.querySelector( li.getAttribute("data-link") ).offsetTop - 100;
-        
+        let posicao = document.querySelector( li.getAttribute("data-link") ).offsetTop - 100;
+        rolarScroll(window.pageYOffset, posicao);
+
         if (document.querySelector(".menu li.active")) {
             document.querySelector(".menu li.active").classList.remove("active");
         }
@@ -24,6 +25,10 @@ menu.forEach((li) => {
 });
 
 document.querySelector(".menuMobile").addEventListener("click", () => {
+    /*
+        Se o elemento "document.querySelectorAll(".menuMobile .menuMobileLine")[1]" estiver com a
+        propriedade CSS display contendo o valor "none", significa que o menu mobile está aberto.
+    */
     if (document.querySelectorAll(".menuMobile .menuMobileLine")[1].style.display != "none") {
         document.querySelector(".menu ul").style.display         = "flex";
         document.querySelector(".menu ul").style.backgroundColor = "rgba(0, 0, 0, 0.9)";
@@ -64,7 +69,11 @@ function fecharMenuMobile() {
 }
 
 document.querySelector("body").addEventListener("click", (e) => {
-    if(!e.target.closest("header")) {
+    /*
+        Se o elemento "document.querySelectorAll(".menuMobile .menuMobileLine")[1]" estiver com a
+        propriedade CSS display contendo o valor "none", significa que o menu mobile está aberto.
+    */
+    if(!e.target.closest("header") && document.querySelectorAll(".menuMobile .menuMobileLine")[1].style.display == "none") {
         fecharMenuMobile();
     }
 });
@@ -239,7 +248,7 @@ document.addEventListener("keyup", (event) => {
 document.querySelector(".voltarHOME a").addEventListener("click", (event) => {
     event.preventDefault();
 
-    document.documentElement.scrollTop = 0;
+    rolarScroll(window.pageYOffset, 0);
         
     document.querySelector(".menu li.active").classList.remove("active");
 });
@@ -267,6 +276,55 @@ function animeServicos() {
 }
 
 animeServicos();
+
+
+function rolarScroll (posicaoIN, posicaoFIN) {
+
+    let atrasoDescer = posicaoIN + 100;
+    let atrasoSubir  = posicaoIN - 100;
+
+    if (posicaoIN > posicaoFIN) {
+
+        let rolar = setInterval(() => {
+
+            if (posicaoIN < (posicaoFIN + 25)) {
+                posicaoIN--;
+            } else if (posicaoIN > atrasoSubir) {
+                posicaoIN -= 2;
+            } else {
+                posicaoIN -= 25;
+            }
+            
+            if (posicaoIN >= posicaoFIN) {
+                window.scroll(0, posicaoIN);
+            } else {
+                clearInterval(rolar);
+            }
+        }, 1);
+
+    } else {
+
+        let rolar = setInterval(() => {
+            
+            if (posicaoIN > (posicaoFIN - 25)) {
+                posicaoIN++;
+            } else if (posicaoIN < atrasoDescer) {
+                posicaoIN += 2;
+            } else {
+                posicaoIN += 25;
+            }
+            
+            if (posicaoIN <= posicaoFIN) {
+                window.scroll(0, posicaoIN);
+            } else {
+                clearInterval(rolar);
+            }
+        }, 1);
+
+    }
+}
+
+rolarScroll(0, 0);
 //GERAL **
 
 

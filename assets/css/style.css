@@ -92,6 +92,7 @@ header.black {
 
 .menu a {
 	text-decoration: none;
+	margin-left: 20px;
 }
 
 .menu ul, .menu li {
@@ -112,7 +113,6 @@ header.black {
 }
 
 .menu li {
-	margin-left: 20px;
 	text-transform: uppercase;
 	color: #FFF;
 	transition: all 0.3s;
