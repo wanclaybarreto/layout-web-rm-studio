@@ -107,6 +107,10 @@ header.black {
 	border-bottom: 5px solid transparent;
 }
 
+.menu ul {
+	transition: background-color 2s;
+}
+
 .menu li {
 	margin-left: 20px;
 	text-transform: uppercase;
@@ -122,6 +126,22 @@ header.black {
 .menu li.active {
 	color: #CCC;
 	border-bottom-color: var(--color-red-dark);
+}
+
+.menuMobile {
+	height: 25px;
+	width: 35px;
+	display: none;
+	flex-direction: column;
+	justify-content: space-between;
+	cursor: pointer;
+}
+
+.menuMobileLine {
+	height: 4px;
+	border-radius: 5px;
+	background-color: #FFF;
+	transition: all 0.5s;
 }
 /* HEADER LOGO/MENU || */
 
@@ -308,9 +328,9 @@ main section .bodySection .subtitle {
 }
 
 .slides .back, .slides .next {
-	width: 70px;
-	height: 70px;
-	border-radius: 35px;
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
 	border: 1px solid #000;
 	background-color: rgba(255, 255, 255, 0.8);
 	display: flex;
@@ -320,10 +340,10 @@ main section .bodySection .subtitle {
 }
 
 .slides .back {
-	margin-left: -30px;
+	margin-left: -17px;
 }
 .slides .next {
-	margin-right: -30px;
+	margin-right: -17px;
 }
 
 .slides .back:hover, .slides .next:hover {
@@ -335,34 +355,13 @@ main section .bodySection .subtitle {
 }
 
 .slides .back img {
-	height: 40px;
+	height: 25px;
 	transform: rotate(180deg);
 }
 .slides .next img {
-	height: 40px;
+	height: 25px;
 }
 /* SLIDES || */
-
-
-
-
-
-/* || MENU MOBILE */
-.menuMobile {
-	height: 25px;
-	width: 35px;
-	display: none;
-	flex-direction: column;
-	justify-content: space-between;
-	cursor: pointer;
-}
-
-.menuMobileLine {
-	height: 4px;
-	border-radius: 5px;
-	background-color: #FFF;
-}
-/* MENU MOBILE || */
 
 
 
@@ -562,11 +561,11 @@ main section .bodySection .subtitle {
 
 .galeriaAmpliada .voltar, .galeriaAmpliada .avancar {
 	margin: 20px;
-	height: 70px;
-	width: 70px;
-	border-radius: 35px;
+	height: 60px;
+	width: 60px;
+	border-radius: 30px;
 	border: 1px solid #000;
-	background-color: rgba(255, 255, 255, 0.8);
+	background-color: rgba(100, 100, 100, 0.5);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -576,20 +575,20 @@ main section .bodySection .subtitle {
 }
 
 .galeriaAmpliada .voltar img {
-	height: 40px;
+	height: 30px;
 	transform: rotate(180deg);
 }
 
 .galeriaAmpliada .avancar img {
-	height: 40px;
+	height: 30px;
 }
 
 .galeriaAmpliada .voltar:hover, .galeriaAmpliada .avancar:hover {
-	background-color: #DDD;
+	background-color: #777;
 }
 
 .galeriaAmpliada .voltar:active, .galeriaAmpliada .avancar:active {
-	background-color: #AAA;
+	background-color: #333;
 }
 
 .galeriaAmpliada .fechar {
@@ -760,20 +759,20 @@ footer .itens img {
 
 
 /* || ANIMAÇÃO JS */
-[data-animeServicos] {
+[data-animeLR] {
 	opacity: 0;
 	transition: all 0.5s;
 }
 
-[data-animeServicos="left"] {
+[data-animeLR="left"] {
 	transform: translate3d(-50vw, 0, 0);
 }
 
-[data-animeServicos="right"] {
+[data-animeLR="right"] {
 	transform: translate3d(50vw, 0, 0);
 }
 
-[data-animeServicos].animateLR {
+[data-animeLR].animateLR {
 	opacity: 1;
 	transform: translate3d(0, 0, 0);
 }
@@ -812,11 +811,21 @@ footer .itens img {
 	.menu ul {
 		display: none;
 		flex-direction: column;
-		width: 100%;
-		top: 75px;
-		left: 0;
+		align-items: flex-start;
+		height: calc(100vh - 100px);
 		position: absolute;
-		background: rgba(0, 0, 0, 0.9);
+		top: 100px;
+		right: 0;
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+
+	.menu ul li {
+		margin-right: 20px;
+		box-sizing: border-box;
+		width: 100%;
+		height: 70px;
+		border-color: transparent !important;
 	}
 
 	/* BANNER: */
@@ -846,11 +855,21 @@ footer .itens img {
 	.menu ul {
 		display: none;
 		flex-direction: column;
-		width: 100%;
-		top: 75px;
-		left: 0;
+		align-items: flex-start;
+		height: calc(100vh - 100px);
 		position: absolute;
-		background: rgba(0, 0, 0, 0.9);
+		top: 100px;
+		right: 0;
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+
+	.menu ul li {
+		margin-right: 20px;
+		box-sizing: border-box;
+		width: 100%;
+		height: 70px;
+		border-color: transparent !important;
 	}
 
 	/* BANNER: */
@@ -953,11 +972,21 @@ footer .itens img {
 	.menu ul {
 		display: none;
 		flex-direction: column;
-		width: 100%;
-		top: 75px;
-		left: 0;
+		align-items: flex-start;
+		height: calc(100vh - 100px);
 		position: absolute;
-		background: rgba(0, 0, 0, 0.9);
+		top: 100px;
+		right: 0;
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+
+	.menu ul li {
+		margin-right: 20px;
+		box-sizing: border-box;
+		width: 100%;
+		height: 70px;
+		border-color: transparent !important;
 	}
 
 	/* BANNER: */

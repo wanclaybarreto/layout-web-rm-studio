@@ -1,4 +1,4 @@
-//Eventos HEADER:
+//** HEADER LOGO/MENU
 let menu = document.querySelectorAll(".menu li");
 
 menu.forEach((li) => {
@@ -6,9 +6,15 @@ menu.forEach((li) => {
     li.addEventListener("click", (event) => {
         event.preventDefault();
 
+        if (window.innerWidth < 932) {
+            fecharMenuMobile();
+        }
+
         document.documentElement.scrollTop = document.querySelector( li.getAttribute("data-link") ).offsetTop - 100;
         
-        document.querySelector(".menu li.active").classList.remove("active");
+        if (document.querySelector(".menu li.active")) {
+            document.querySelector(".menu li.active").classList.remove("active");
+        }
 
         if(li.getAttribute("data-link") != "inicio") {
             li.classList.add("active");
@@ -17,25 +23,105 @@ menu.forEach((li) => {
 
 });
 
+document.querySelector(".menuMobile").addEventListener("click", () => {
+    if (document.querySelectorAll(".menuMobile .menuMobileLine")[1].style.display != "none") {
+        document.querySelector(".menu ul").style.display         = "flex";
+        document.querySelector(".menu ul").style.backgroundColor = "rgba(0, 0, 0, 0.9)";
+        document.querySelector("header").style.backgroundColor   = "rgba(0, 0, 0, 0.9)";
 
-
-//Evento botão [HOME] FOOTER:
-document.querySelector(".voltarHOME a").addEventListener("click", (event) => {
-    event.preventDefault();
-
-    document.documentElement.scrollTop = 0;
-        
-    document.querySelector(".menu li.active").classList.remove("active");
+        document.querySelectorAll(".menuMobile .menuMobileLine").forEach((lineMenu, i) => {
+            if (i == 0) {
+                lineMenu.style.transform = "rotate(45deg)";
+                lineMenu.style.marginTop = "21px";
+            } else if (i == 1) {
+                lineMenu.style.display = "none";
+            } else {
+                lineMenu.style.transform = "rotate(-45deg)";
+                lineMenu.style.marginTop = "-21px";
+            }
+        });
+    } else {
+        fecharMenuMobile();
+    }
 });
 
+function fecharMenuMobile() {
+    document.querySelector(".menu ul").style.display         = "none";
+    document.querySelector(".menu ul").style.backgroundColor = "";
+    document.querySelector("header").style.backgroundColor   = "";
+
+    document.querySelectorAll(".menuMobile .menuMobileLine").forEach((lineMenu, i) => {
+        if (i == 0) {
+            lineMenu.style.transform = "initial";
+            lineMenu.style.marginTop = "initial";
+        } else if (i == 1) {
+            lineMenu.style.display = "initial";
+        } else {
+            lineMenu.style.transform = "initial";
+            lineMenu.style.marginTop = "initial";
+        }
+    });
+}
+
+document.querySelector("body").addEventListener("click", (e) => {
+    if(!e.target.closest("header")) {
+        fecharMenuMobile();
+    }
+});
+
+function desativarMenus() {
+    document.querySelectorAll(".menu li").forEach((menu) => {
+        menu.classList.remove("active");
+    });
+}
+
+function animeHeader() {
+    if (window.pageYOffset > 50) {
+        document.querySelector("header").classList.add("black");
+    } else {
+        document.querySelector("header").classList.remove("black");
+    }
+
+    desativarMenus();
+
+    if (window.pageYOffset + 100 >= document.querySelector("#sobreNos").offsetTop &&
+               window.pageYOffset + 100 < document.querySelector("#servicos").offsetTop) {
+        
+        document.querySelectorAll(".menu li")[1].classList.add("active");
+
+    } else if (window.pageYOffset + 100 >= document.querySelector("#servicos").offsetTop &&
+               window.pageYOffset + 100 < document.querySelector("#nossosProjetos").offsetTop) {
+        
+        document.querySelectorAll(".menu li")[2].classList.add("active");
+
+    } else if (window.pageYOffset + 100 >= document.querySelector("#nossosProjetos").offsetTop &&
+               window.pageYOffset + 100 < document.querySelector("#galeria").offsetTop) {
+
+        document.querySelectorAll(".menu li")[3].classList.add("active");
+
+    } else if (window.pageYOffset + 100 >= document.querySelector("#galeria").offsetTop &&
+               window.pageYOffset + 100 < document.querySelector("#contatenos").offsetTop) {
+
+        document.querySelectorAll(".menu li")[4].classList.add("active");
+
+    } else if (window.pageYOffset + 100 >= document.querySelector("#contatenos").offsetTop) {
+
+        document.querySelectorAll(".menu li")[5].classList.add("active");
+
+    }
+}
+
+animeHeader();
+//HEADER LOGO/MENU **
 
 
-//SLIDER:
+
+//** SLIDER
 let slidesArea        = document.querySelector(".slides .slidesArea");
 let indSlide          = 0;
 let indMaxSlide       = document.querySelectorAll(".slides .slide").length - 1;
 
-document.querySelector(".slides .move .back").style.backgroundColor = "#AAA";
+document.querySelector(".slides .move .back").style.opacity = "0.2";
 
 function avancarSlide() {
     indSlide++;
@@ -58,18 +144,6 @@ function voltarSlide() {
     moverSlide();
 }
 
-window.addEventListener("resize", () => {
-    if ((indSlide > indMaxSlide - 2 && (window.innerWidth > 1024))) {
-        indSlide -= 2;
-        moverSlide();
-    } else if ((indSlide > indMaxSlide - 1 && (window.innerWidth < 1025 && window.innerWidth > 705))) {
-        indSlide--;
-        moverSlide();
-    } else {
-        moverSlide();
-    }
-});
-
 function moverSlide() {
     let larguraSlide = document.querySelector(".slide").clientWidth + 20; //20 por causa do margin 10 nos lados
 
@@ -79,21 +153,22 @@ function moverSlide() {
         (indSlide > indMaxSlide - 2 && (window.innerWidth < 1025 && window.innerWidth > 705)) ||
         (indSlide > indMaxSlide - 1 && (window.innerWidth < 706))) {
         
-            document.querySelector(".slides .move .next").style.backgroundColor = "#AAA";
+            document.querySelector(".slides .move .next").style.opacity = "0.2";
     } else {
-            document.querySelector(".slides .move .next").style.backgroundColor = "rgba(255, 255, 255, 0.8)";
+            document.querySelector(".slides .move .next").style.opacity = "1";
     }
 
     if (indSlide < 1) {
-        document.querySelector(".slides .move .back").style.backgroundColor = "#AAA";
+        document.querySelector(".slides .move .back").style.opacity = "0.2";
     } else {
-        document.querySelector(".slides .move .back").style.backgroundColor = "rgba(255, 255, 255, 0.8)";
+        document.querySelector(".slides .move .back").style.opacity = "1";
     }
 }
+//SLIDER **
 
 
 
-//GALERIA:
+//** GALERIA
 let imgsGaleria = [];
 let indImgsGaleria;
 
@@ -156,11 +231,24 @@ document.addEventListener("keyup", (event) => {
 
     }
 });
+//GALERIA **
 
 
 
-//ANIMAÇÕES:
-let elementosAnimateServicos = document.querySelectorAll("[data-animeServicos]");
+//** FOOTER COPYRIGHT
+document.querySelector(".voltarHOME a").addEventListener("click", (event) => {
+    event.preventDefault();
+
+    document.documentElement.scrollTop = 0;
+        
+    document.querySelector(".menu li.active").classList.remove("active");
+});
+//FOOTER COPYRIGHT **
+
+
+
+//** GERAL
+let elementosAnimateServicos = document.querySelectorAll("[data-animeLR]");
 
 function animeServicos() {
     //(posição do scroll) + (3/4 da altura da tela do dispositivo em questão):
@@ -169,69 +257,44 @@ function animeServicos() {
     elementosAnimateServicos.forEach((elemento, ind) => {
         if( position > elemento.offsetTop){
             elemento.classList.add("animateLR");
-        } else {
+        }
+        /* //DESFAZ A ANIMAÇÃO PARA QUE ELE ACONTEÇA DE NOVO
+        else {
             elemento.classList.remove("animateLR");
         }
+        */
     });
 }
 
 animeServicos();
-
-function animeHeader() {
-    if (window.pageYOffset > 50) {
-        document.querySelector("header").classList.add("black");
-    } else {
-        document.querySelector("header").classList.remove("black");
-    }
+//GERAL **
 
 
-    if(window.pageYOffset + 100 < document.querySelector("#sobreNos").offsetTop) {
 
-        document.querySelectorAll(".menu li")[1].classList.remove("active");
-        document.querySelectorAll(".menu li")[2].classList.remove("active");
-
-    } else if (window.pageYOffset + 100 > document.querySelector("#sobreNos").offsetTop &&
-               window.pageYOffset + 100 < document.querySelector("#servicos").offsetTop) {
-        
-        document.querySelectorAll(".menu li")[1].classList.add("active");
-        document.querySelectorAll(".menu li")[2].classList.remove("active");
-
-    } else if (window.pageYOffset + 100 > document.querySelector("#servicos").offsetTop &&
-               window.pageYOffset + 100 < document.querySelector("#nossosProjetos").offsetTop) {
-        
-        document.querySelectorAll(".menu li")[1].classList.remove("active");
-        document.querySelectorAll(".menu li")[2].classList.add("active");
-        document.querySelectorAll(".menu li")[3].classList.remove("active");
-
-    } else if (window.pageYOffset + 100 > document.querySelector("#nossosProjetos").offsetTop &&
-               window.pageYOffset + 100 < document.querySelector("#galeria").offsetTop) {
-
-        document.querySelectorAll(".menu li")[2].classList.remove("active");
-        document.querySelectorAll(".menu li")[3].classList.add("active");
-        document.querySelectorAll(".menu li")[4].classList.remove("active");
-
-    } else if (window.pageYOffset + 100 > document.querySelector("#galeria").offsetTop &&
-               window.pageYOffset + 100 < document.querySelector("#contatenos").offsetTop) {
-
-        document.querySelectorAll(".menu li")[2].classList.remove("active");
-        document.querySelectorAll(".menu li")[3].classList.remove("active");
-        document.querySelectorAll(".menu li")[4].classList.add("active");
-        document.querySelectorAll(".menu li")[5].classList.remove("active");
-
-    } else if (window.pageYOffset + 100 > document.querySelector("#contatenos").offsetTop) {
-
-        document.querySelectorAll(".menu li")[2].classList.remove("active");
-        document.querySelectorAll(".menu li")[4].classList.remove("active");
-        document.querySelectorAll(".menu li")[5].classList.add("active");
-
-    }
-}
-
-animeHeader();
-
+//Evento de rolagem do scroll
 window.addEventListener("scroll", () => {
     animeServicos();
     animeHeader();
 });
 
-//TODO Implementar debounce no evento scroll.
+//Evento de redimensionamento da janela
+window.addEventListener("resize", () => {
+    //Slider:
+    if ((indSlide > indMaxSlide - 2 && (window.innerWidth > 1024))) {
+        indSlide -= 2;
+        moverSlide();
+    } else if ((indSlide > indMaxSlide - 1 && (window.innerWidth < 1025 && window.innerWidth > 705))) {
+        indSlide--;
+        moverSlide();
+    } else {
+        moverSlide();
+    }
+
+    //Menu:
+    if (window.innerWidth > 932) {
+        fecharMenuMobile();
+        document.querySelector(".menu ul").style.display = "flex";
+    } else {
+        fecharMenuMobile();
+    }
+});
