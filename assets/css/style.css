@@ -21,10 +21,6 @@
 	font-family: 'Ubuntu', Arial, Liberation Sans;
 }
 
-body {
-	background-color: #000;
-}
-
 .column {
 	flex-direction: column;
 }
@@ -157,6 +153,7 @@ header.black {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
+	background-attachment: fixed;
 }
 
 .bannerIn {

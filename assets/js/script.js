@@ -325,6 +325,53 @@ function rolarScroll (posicaoIN, posicaoFIN) {
 }
 
 rolarScroll(0, 0);
+
+
+function efeitoParallax() {
+    document.querySelectorAll(".parallax").forEach((elemento, ind) => {
+        if (window.pageYOffset <= elemento.offsetTop + elemento.clientHeight &&
+            window.pageYOffset >= elemento.offsetTop - elemento.clientHeight) {
+
+            let bg_pos = 0;
+
+            bg_pos = ( window.pageYOffset - elemento.offsetTop ) / 4;
+                        
+            elemento.style.backgroundPosition = "center calc(50% - " +bg_pos+ "px)";
+
+            //Efeito ZOOM (PRIMEIRO ELEMENTO - BANNER):
+            if (ind == 0) {
+                if ((window.innerWidth >= 1920 && window.innerHeight < 1280) ||
+                    (window.innerWidth >= 1280 && window.innerHeight < 850)) {
+
+                    elemento.style.backgroundSize = (bg_pos + 100) + "%";
+
+                } else if ((window.innerWidth >= 1024 && window.innerHeight < 769) ||
+                        (window.innerWidth >= 720  && window.innerHeight < 601)) {
+                    
+                    elemento.style.backgroundSize = (bg_pos + 115) + "%";
+
+                } else if ((window.innerWidth == 1024  && window.innerHeight < 1367)) {
+
+                    elemento.style.backgroundSize = (bg_pos + 200) + "%";
+
+                } else if ((window.innerWidth == 768  && window.innerHeight < 1025)) {
+
+                    elemento.style.backgroundSize = (bg_pos + 200) + "%";
+
+                } else if ((window.innerWidth >= 300 && window.innerHeight < 850)) {
+                    
+                    elemento.style.backgroundSize = (bg_pos + 325) + "%";
+
+                }
+                else {
+                    elemento.style.backgroundSize = "cover";
+                }
+            }
+        }
+    });
+}
+
+efeitoParallax();
 //GERAL **
 
 
@@ -333,6 +380,7 @@ rolarScroll(0, 0);
 window.addEventListener("scroll", () => {
     animeServicos();
     animeHeader();
+    efeitoParallax();
 });
 
 //Evento de redimensionamento da janela
@@ -355,4 +403,7 @@ window.addEventListener("resize", () => {
     } else {
         fecharMenuMobile();
     }
+
+    //Efeito ZOOM (PARALLAX - PRIEMIRO ELEMENTO, BANNER):
+    document.querySelector(".parallax").style.backgroundSize = "cover";
 });
