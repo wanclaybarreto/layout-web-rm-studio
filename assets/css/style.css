@@ -147,6 +147,7 @@ header.black {
 
 /* || BANNER */
 #banner {
+	min-height: 550px;
 	height: 100vh;
 
 	background-image: url("../images/banner.jpg");
@@ -496,6 +497,7 @@ main section .bodySection .subtitle {
 	width: 100%;
 	justify-content: center;
 	flex-wrap: wrap;
+	overflow-x: hidden;
 }
 
 .galeria .foto {
@@ -870,6 +872,10 @@ footer .itens img {
 	}
 
 	/* BANNER: */
+	#banner {
+		background-attachment: initial;
+	}
+
 	.bannerIn h1 {
 		font-size: 50px;
 		max-width: 300px;
@@ -915,6 +921,11 @@ footer .itens img {
 	}
 
 	/* GALERIA: */
+	.galeria .foto:hover .ampliarFoto {
+		display: none;
+		cursor: initial;
+	}
+
 	.galeria .ampliarFoto {
 		display: none;
 	}
@@ -987,6 +998,10 @@ footer .itens img {
 	}
 
 	/* BANNER: */
+	#banner {
+		background-attachment: initial;
+	}
+
 	.bannerIn h1 {
 		font-size: 40px;
 		max-width: 250px;
@@ -1049,6 +1064,11 @@ footer .itens img {
 	}
 
 	/* GALERIA: */
+	.galeria .foto:hover .ampliarFoto {
+		display: none;
+		cursor: initial;
+	}
+
 	.galeria .ampliarFoto {
 		display: none;
 	}
