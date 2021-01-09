@@ -338,7 +338,7 @@ function efeitoParallax() {
                         
             elemento.style.backgroundPosition = "center calc(50% - " +bg_pos+ "px)";
 
-            //Efeito ZOOM (PRIMEIRO ELEMENTO - BANNER):
+            //Efeito ZOOM (PRIMEIRO ELEMENTO - BANNER) - aplicado apenas em alguns tipos de tela:
             if (ind == 0) {
                 if ((window.innerWidth >= 1920 && window.innerHeight < 1280) ||
                     (window.innerWidth >= 1280 && window.innerHeight < 850)) {
@@ -358,12 +358,7 @@ function efeitoParallax() {
 
                     elemento.style.backgroundSize = (bg_pos + 200) + "%";
 
-                } else if ((window.innerWidth >= 300 && window.innerHeight < 850)) {
-                    
-                    elemento.style.backgroundSize = (bg_pos + 325) + "%";
-
-                }
-                else {
+                } else {
                     elemento.style.backgroundSize = "cover";
                 }
             }
@@ -380,7 +375,11 @@ efeitoParallax();
 window.addEventListener("scroll", () => {
     animeServicos();
     animeHeader();
-    efeitoParallax();
+    
+    if (window.innerWidth >= 768) {
+        efeitoParallax();
+    }
+    
 });
 
 //Evento de redimensionamento da janela
