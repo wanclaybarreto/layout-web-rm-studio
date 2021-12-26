@@ -11,33 +11,23 @@ visualizada pelo usuário.
 
 <h3>Banner:</h3>
 
-<div style="margin-left: 20px;">
     O banner foi implementado com um efeito parallax personalizado com Javascript. Contudo, esse efeito não foi programado para acontecer
     em todas as resoluções de tela.
-</div>
 
 <h3>Seção SERVIÇOS:</h3>
 
-<div style="margin-left: 20px;">
     Nessa seção foram adicionados efeitos de animação no processo de disposição visual dos elementos.
-</div>
 
 <h3>Seção NOSSOS PROJETOS:</h3>
 
-<div style="margin-left: 20px;">
     Nessa seção foi implementado um "carousel" responsivo contendo o projetos feitos pelo RM Studio.
-</div>
 
 <h3>Seção NOSSOS PROJETOS:</h3>
 
-<div style="margin-left: 20px;">
     Nessa seção foi implementado um "carousel" responsivo contendo o projetos feitos pelo RM Studio.
-</div>
 
 <h3>Seção GALERIA:</h3>
 
-<div style="margin-left: 20px;">
     Além do efeito de animação aplicado na disposição visual dos elementos, foram implementadas funcionalidades que deram dinamicidade à galeria.
     Portanto, essas funcionalidades são: clique em foto para visualização ampliada; "rolagem" das fotos através dos botões (avançar e voltar) laterais ou
     das teclas "seta para o lado esquerdo" e "seta para o lado direito"; saída do modo de visualização ampliada através do botão fechar (x) ou da tecla "ESC".
-</div>
