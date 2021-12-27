@@ -33,5 +33,5 @@ visualizada pelo usuário.
     das teclas "seta para o lado esquerdo" e "seta para o lado direito"; saída do modo de visualização ampliada através do botão fechar (x) ou da tecla "ESC".
 
 
-Autor: Wanclay Barreto
+Autor: Wanclay Barreto <br/>
 Github: https://github.com/wanclaybarreto
